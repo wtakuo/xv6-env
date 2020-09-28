@@ -2,7 +2,7 @@ FROM ubuntu
 
 LABEL maintainer="takuo@c.titech.ac.jp"
 
-ARG TZ=Asia/Tokyo
+ARG TZ=UTC
 ARG USER=xv6
 ARG GROUP=xv6
 ARG PASS=xv6
