@@ -41,6 +41,10 @@ $
 ```
 You can exit from xv6 by typing `ctrl-A` followed by `x`.
 
+## Opfs
+
+This docker image contains [opfs](https://github.com/titech-os/opfs), a simple utility for operating on xv6 file system images. 
+
 ## Note
 
 The container runs bash with user `xv6`.
