@@ -1,8 +1,10 @@
-# xv6-env : docker image for building/running xv6-riscv
+xv6-env
+=======
+Docker image for building/running [xv6-riscv](https://github.com/mit-pdos/xv6-riscv)
 
 ## Typical Usage
 
-Make sure that you have a copy of [xv6-riscv](https://github.com/mit-pdos/xv6-riscv) distribution in the filesystem of your computer.
+Make sure that you have a copy of xv6-riscv distribution in the filesystem of your computer.
 You can obtain it using the following command (Skip this step if you already have one).
 ```
 $ git clone https://github.com/mit-pdos/xv6-riscv.git
