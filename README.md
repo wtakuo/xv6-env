@@ -14,9 +14,10 @@ $ docker pull wtakuo/xv6-env
 ```
 
 Start a container with the command below.
-You should replace `path-to-xv6` with the *full path* to your copy of xv6-riscv.
+Note that `path-to-xv6-riscv` refers to the path of your copy of xv6-riscv.
 ```
-$ docker run -it --rm -v path-to-xv6:/home/xv6/xv6-riscv wtakuo/xv6-env
+$ cd path-to-xv6-riscv
+$ docker run -it --rm -v $(pwd):/home/xv6/xv6-riscv wtakuo/xv6-env
 ```
 
 If things go well, you should see the bash prompt of the container as follows. 
