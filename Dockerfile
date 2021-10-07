@@ -28,8 +28,8 @@ RUN apt-get update \
       build-essential \
       gdb-multiarch \
       qemu-system-misc \
-      gcc-riscv64-linux-gnu \
-      binutils-riscv64-linux-gnu \
+      gcc-riscv64-unknown-elf \
+      binutils-riscv64-unknown-elf \
  && rm -rf /var/lib/apt/lists/* \
  && groupadd ${GROUP} \
  && useradd -g ${GROUP} -m ${USER} \
