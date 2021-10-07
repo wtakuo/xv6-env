@@ -19,10 +19,10 @@ ENV XV6=${HOME}/xv6-riscv
 COPY --from=opfsbuilder /root/local/bin/* /usr/local/bin/
 
 RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata \
  && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
  && dpkg-reconfigure --frontend noninteractive tzdata \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+ && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       sudo \
       git \
       build-essential \
