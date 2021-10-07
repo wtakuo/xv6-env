@@ -1,34 +1,30 @@
 xv6-env
 =======
-Docker image for building/running [xv6-riscv](https://github.com/mit-pdos/xv6-riscv)
+Docker image for building/running xv6-riscv
 
 ## Typical Usage
-
-Make sure that you have a copy of xv6-riscv distribution in the filesystem of your computer.
+Make sure that you have a copy of [xv6-riscv](https://github.com/mit-pdos/xv6-riscv) distribution in the filesystem of your host computer.
 You can obtain it using the following command (Skip this step if you already have one).
 ```
 $ git clone https://github.com/mit-pdos/xv6-riscv.git
 ```
 
-Pull the docker image from the registry.
-```
-$ docker pull wtakuo/xv6-env
-```
-
-Start a container with the command below.
-Note that `path-to-xv6-riscv` refers to the path of your copy of xv6-riscv.
+The image is available on [Docker Hub](https://hub.docker.com/r/wtakuo/xv6-env).
+So you can start a container with the command below.
+Note that `path-to-xv6-riscv` refers to the path to your copy of xv6-riscv distribution on the host.
 ```
 $ cd path-to-xv6-riscv
 $ docker run -it --rm -v $(pwd):/home/xv6/xv6-riscv wtakuo/xv6-env
 ```
+The image is multi architecutre (supporting arm64 and amd64).
+If you like an image for a specific architecture, use [`wtakuo/xv6-env-arm64`](https://hub.docker.com/r/wtakuo/xv6-env-arm64) or [`wtakuo/xv6-env-amd64`](https://hub.docker.com/r/wtakuo/xv6-env-amd64) instead.
 
-If things go well, you should see the bash prompt of the container as follows. 
-Note that `0c765f60374a` is the container ID that may vary.
+If things go well, you should see the bash prompt of the container as follows (Here, `0c765f60374a` is the container ID that may vary).
 ```
 xv6@0c765f60374a:~$ 
 ```
 
-Now you can build and start xv6.
+Make sure that you can build and start xv6.
 ```
 xv6@0c765f60374a:~$ cd xv6-riscv
 xv6@0c765f60374a:~$ make
@@ -45,11 +41,17 @@ $
 You can exit from xv6 by typing `ctrl-A` followed by `x`.
 
 ## Opfs
+For your convenience, this docker image contains [opfs](https://github.com/titech-os/opfs), a simple utility for operating on xv6 file system images. 
 
-This docker image contains [opfs](https://github.com/titech-os/opfs), a simple utility for operating on xv6 file system images. 
+## To build the image by yourself
+If you want to build the docker image by yourself, you can use the following commands.
+```
+$ git pull https://github.com/wtakuo/xv6-env.git
+$ cd xv6-env
+$ docker build -t wtakuo/xv6-env .
+```
 
 ## Note
-
 The container runs bash with user `xv6`.
 The password of the user is `xv6`.
 
