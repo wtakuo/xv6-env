@@ -38,6 +38,8 @@ RUN apt-get update \
  && useradd -g ${GROUP} -m ${USER} \
  && (echo "${USER}:${PASS}" | chpasswd) \
  && gpasswd -a ${USER} sudo \
+ && mkdir -p ${XV6} \
+ && chown -R ${USER}:${GROUP} ${XV6} \
  && (echo "add-auto-load-safe-path ${XV6}/.gdbinit" > ${HOME}/.gdbinit) \
  && chown ${USER}:${GROUP} ${HOME}/.gdbinit
 
