@@ -44,6 +44,6 @@ RUN apt-get update \
  && chown ${USER}:${GROUP} ${HOME}/.gdbinit
 
 USER ${USER}
-WORKDIR ${HOME}
+WORKDIR ${XV6}
 
 ENTRYPOINT ["/bin/bash"]
