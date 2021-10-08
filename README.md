@@ -16,7 +16,7 @@ Note that `path-to-xv6-riscv` refers to the path to your copy of xv6-riscv distr
 $ cd path-to-xv6-riscv
 $ docker run -it --rm -v $(pwd):/home/xv6/xv6-riscv wtakuo/xv6-env
 ```
-The image supports multiple architecutres (currently arm64 and amd64).
+The image supports multiple architectures (currently arm64 and amd64).
 If you need a container for a specific architecture, use [`wtakuo/xv6-env-arm64`](https://hub.docker.com/r/wtakuo/xv6-env-arm64) or [`wtakuo/xv6-env-amd64`](https://hub.docker.com/r/wtakuo/xv6-env-amd64) instead.
 
 If things go well, you should see the following output from the newly started container.
@@ -26,7 +26,7 @@ See "man sudo_root" for details.
 
 xv6@0c765f60374a:~/xv6-riscv$ 
 ```
-The shell prompt (`xv6@0c765f60374a:~/xv6-riscv$`) consists of the username (`xv6`), hostname (`0c765f60374a`) and current working directory (`/home/xv6/xv6-riscv`). The hostname is the same as the container ID. So it may differ from the above example.
+The shell prompt (`xv6@0c765f60374a:~/xv6-riscv$`) consists of the username (`xv6`), hostname (`0c765f60374a`), and current working directory (`/home/xv6/xv6-riscv`). The hostname is the same as the container ID. So it may differ from the above example.
 
 Now make sure that you can build and start xv6.
 ```
