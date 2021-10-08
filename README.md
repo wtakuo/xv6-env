@@ -10,26 +10,29 @@ $ git clone https://github.com/mit-pdos/xv6-riscv.git
 ```
 
 The image is available on [Docker Hub](https://hub.docker.com/r/wtakuo/xv6-env).
-So you can start a container with the command below.
+You can start a new container with the command below.
 Note that `path-to-xv6-riscv` refers to the path to your copy of xv6-riscv distribution on the host.
 ```
 $ cd path-to-xv6-riscv
 $ docker run -it --rm -v $(pwd):/home/xv6/xv6-riscv wtakuo/xv6-env
 ```
-The image is multi architecutre (supporting arm64 and amd64).
-If you like an image for a specific architecture, use [`wtakuo/xv6-env-arm64`](https://hub.docker.com/r/wtakuo/xv6-env-arm64) or [`wtakuo/xv6-env-amd64`](https://hub.docker.com/r/wtakuo/xv6-env-amd64) instead.
+The image supports multiple architecutres (currently arm64 and amd64).
+If you need a container for a specific architecture, use [`wtakuo/xv6-env-arm64`](https://hub.docker.com/r/wtakuo/xv6-env-arm64) or [`wtakuo/xv6-env-amd64`](https://hub.docker.com/r/wtakuo/xv6-env-amd64) instead.
 
-If things go well, you should see the bash prompt of the container as follows (Here, `0c765f60374a` is the container ID that may vary).
+If things go well, you should see the following output from the newly started container.
 ```
-xv6@0c765f60374a:~$ 
-```
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
 
-Make sure that you can build and start xv6.
+xv6@0c765f60374a:~/xv6-riscv$ 
 ```
-xv6@0c765f60374a:~$ cd xv6-riscv
-xv6@0c765f60374a:~$ make
+The shell prompt (`xv6@0c765f60374a:~/xv6-riscv$`) consists of the username (`xv6`), hostname (`0c765f60374a`) and current working directory (`/home/xv6/xv6-riscv`). The hostname is the same as the container ID. So it may differ from the above example.
+
+Now make sure that you can build and start xv6.
+```
+xv6@0c765f60374a:~/xv6-riscv$ make
 ...
-xv6@0c765f60374a:~$ make qemu
+xv6@0c765f60374a:~/xv6-riscv$ make qemu
 ...
 xv6 kernel is booting
 
@@ -38,7 +41,7 @@ hart 1 starting
 init: starting sh
 $ 
 ```
-You can exit from xv6 by typing `ctrl-A` followed by `x`.
+To exit from xv6, type `ctrl-A` followed by `x`.
 
 ## Opfs
 For your convenience, this docker image contains [opfs](https://github.com/titech-os/opfs), a simple utility for operating on xv6 file system images. 
