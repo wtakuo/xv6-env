@@ -1,7 +1,7 @@
 # Docker image for building/running xv6-riscv
-# Takuo Watanabe (Tokyo Institute of Technology)
+# Takuo Watanabe (Institute of Science Tokyo)
 
-FROM ubuntu as opfsbuilder
+FROM ubuntu AS opfsbuilder
 WORKDIR /root/
 RUN apt-get update \
  && apt-get install -y git build-essential \
@@ -10,7 +10,7 @@ RUN apt-get update \
 
 FROM ubuntu
 
-LABEL maintainer="takuo@c.titech.ac.jp"
+LABEL maintainer="takuo@comp.isct.ac.jp"
 
 ARG TZ=UTC
 ARG USER=xv6
