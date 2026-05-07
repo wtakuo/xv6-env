@@ -1,14 +1,14 @@
 # Docker image for building/running xv6-riscv
 # Takuo Watanabe (Institute of Science Tokyo)
 
-FROM ubuntu AS opfsbuilder
+FROM debian:stable-slim AS opfsbuilder
 WORKDIR /root/
 RUN apt-get update \
  && apt-get install -y git build-essential \
  && git clone https://github.com/titech-os/opfs.git \
  && (cd opfs; make PREFIX=/root/local install)
 
-FROM ubuntu
+FROM debian:stable-slim
 
 LABEL maintainer="takuo@comp.isct.ac.jp"
 
@@ -30,7 +30,7 @@ RUN apt-get update \
       git \
       build-essential \
       gdb-multiarch \
-      qemu-system-misc \
+      qemu-system-riscv \
       gcc-riscv64-unknown-elf \
       binutils-riscv64-unknown-elf \
  && rm -rf /var/lib/apt/lists/* \
