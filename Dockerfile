@@ -28,12 +28,25 @@ RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       sudo \
       git \
-      build-essential \
+      make \
+      gcc \
+      libc6-dev \
       gdb-multiarch \
       qemu-system-riscv \
       gcc-riscv64-unknown-elf \
       binutils-riscv64-unknown-elf \
- && rm -rf /var/lib/apt/lists/* \
+ && rm -f /usr/lib/gcc/riscv64-unknown-elf/*/cc1plus \
+ && rm -f /usr/lib/gcc/riscv64-unknown-elf/*/lto1 \
+ && rm -f /usr/bin/riscv64-unknown-elf-lto-dump \
+ && for d in /usr/lib/gcc/riscv64-unknown-elf/*/*/; do \
+      name=$(basename "$d"); \
+      case "$name" in rv64imafdc|include|include-fixed|install-tools|plugin) ;; *) rm -rf "$d" ;; esac; \
+    done \
+ && for d in /usr/lib/gcc/riscv64-unknown-elf/*/rv64imafdc/*/; do \
+      name=$(basename "$d"); \
+      [ "$name" = "lp64d" ] || rm -rf "$d"; \
+    done \
+ && rm -rf /var/lib/apt/lists/* /usr/share/doc/* /usr/share/man/* /usr/share/locale/* \
  && groupadd ${GROUP} \
  && useradd -g ${GROUP} -m ${USER} \
  && (echo "${USER}:${PASS}" | chpasswd) \
